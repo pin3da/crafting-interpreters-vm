@@ -43,6 +43,19 @@ cc_library(
     ]
 )
 
+cc_library(
+    name = "vm",
+    srcs = ["vm.c"],
+    hdrs = ["vm.h"],
+    deps = [
+        ":common_header",
+        ":memory",
+        ":value",
+        ":chunk",
+        ":debug",
+    ]
+)
+
 cc_binary(
     name = "main",
     srcs = ["main.c"],
@@ -51,5 +64,6 @@ cc_binary(
         ":chunk",
         ":debug",
         ":memory",
+        ":vm",
     ],
 )
