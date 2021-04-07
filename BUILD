@@ -55,27 +55,21 @@ cc_library(
 )
 
 cc_library(
-    name = "compiler",
-    srcs = ["compiler.c"],
-    hdrs = ["compiler.h"],
-    deps = [
-        ":common_header",
-        ":memory",
-        ":value",
-        ":scanner",
-    ]
-)
-
-cc_library(
     name = "vm",
-    srcs = ["vm.c"],
-    hdrs = ["vm.h"],
+    srcs = [
+         "compiler.c",
+         "vm.c",
+    ],
+    hdrs = [
+         "compiler.h",
+         "vm.h",
+    ],
     deps = [
         ":chunk",
         ":common_header",
-        ":compiler",
         ":debug",
         ":memory",
+        ":scanner",
         ":value",
     ]
 )
