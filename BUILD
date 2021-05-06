@@ -6,71 +6,11 @@ cc_import(
 )
 
 cc_library(
-    name = "memory",
-    srcs = ["memory.c"],
-    hdrs = ["memory.h"],
-    deps = [":common_header"]
-)
-
-cc_library(
-    name = "value",
-    srcs = ["value.c"],
-    hdrs = ["value.h"],
-    deps = [
-         ":common_header",
-         ":memory",
-    ]
-)
-
-cc_library(
-    name = "debug",
-    srcs = ["debug.c"],
-    hdrs = ["debug.h"],
-    deps = [
-         ":common_header",
-         ":chunk",
-    ]
-)
-
-cc_library(
-    name = "chunk",
-    srcs = ["chunk.c"],
-    hdrs = ["chunk.h"],
-    deps = [
-        ":common_header",
-        ":memory",
-        ":value",
-    ]
-)
-
-cc_library(
-    name = "scanner",
-    srcs = ["scanner.c"],
-    hdrs = ["scanner.h"],
-    deps = [
-        ":common_header",
-        ":memory",
-        ":value",
-    ]
-)
-
-cc_library(
     name = "vm",
-    srcs = [
-         "compiler.c",
-         "vm.c",
-    ],
-    hdrs = [
-         "compiler.h",
-         "vm.h",
-    ],
+    srcs = glob(["*.c"], exclude=["main.c"]),
+    hdrs = glob(["*.h"], exclude=["common.h"]),
     deps = [
-        ":chunk",
-        ":common_header",
-        ":debug",
-        ":memory",
-        ":scanner",
-        ":value",
+         ":common_header",
     ]
 )
 
@@ -79,9 +19,6 @@ cc_binary(
     srcs = ["main.c"],
     deps = [
         ":common_header",
-        ":chunk",
-        ":debug",
-        ":memory",
         ":vm",
     ],
 )
