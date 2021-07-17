@@ -30,3 +30,6 @@
 
 # Bazel stuff
 /bazel-*
+
+# Editors
+.vscode/
