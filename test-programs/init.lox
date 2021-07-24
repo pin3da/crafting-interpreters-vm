@@ -1,0 +1,10 @@
+fun a() {
+    print "hi";
+}
+
+fun init() {
+    print "bye";
+}
+
+print a();
+print init();
